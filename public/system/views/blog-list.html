@@ -1,0 +1,42 @@
+<section class="uk-width-3-10" style="padding:15px;">
+	<header>
+		<div style="height:40px;background:#F7F7F3;padding:0 10px;" class="uk-vertical-align">
+		<div class="uk-vertical-align-middle uk-width-1-2">所有博文 </div><div class="uk-vertical-align-middle uk-width-1-2" style="text-align:right;"><a href="/admin/blog/add"><i class="fa fa-plus"></i></a></div>
+      	</div>
+	</header>
+	<div id="article-list" class="uk-scrollable-text" style="height:600px;">
+        
+        <ul class="uk-list uk-list-space">
+        	<li ng-repeat="blog in blogList">
+        		<a class="article-title" href="javascript:void(0);" ng-click="selBlog($index)">
+                    <h3>{{blog.title | limitTo:18}}
+                        <button class="uk-button uk-button-danger uk-align-right" ng-click="delBlog(blog._id)"><i class="fa fa-remove">删除</i></button>
+                    </h3>
+                </a>
+                <p>{{blog.info}}</p>
+                <input type="hidden" class="article-id" value="{{blog._id}}"/>
+                <time>发布于:{{blog.createTime}} | 更新于{{blog.updateTime}}</time>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<div class="uk-width-7-10" style="padding:15px;">
+	<header>
+    	<div >
+    		<a class="uk-button uk-button-success" type="button" href="/admin/blog/edit/{{activeBlog._id}}">
+                <i class="fa fa-edit"></i>编辑
+            </a>
+    	</div>
+    </header>
+	<div id="article-content" class="uk-scrollable-text" style="height:630px;">
+    <section>
+        <div class="blog-header uk-text-center">
+            <h1>{{activeBlog.title}}</h1>
+            <time>发布于:{{activeBlog.createTime}} | 更新于{{activeBlog.updateTime}}</time>
+        </div>
+        <div class="blog-info uk-align-center">摘要：{{activeBlog.info}}</div>
+        <div class="blog-content" ng-bind-html="activeBlogContent()"></div>
+    </section>
+    </div>
+</div>

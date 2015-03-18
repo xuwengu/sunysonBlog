@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html ng-app="sunysonApp">
+  <head>
+  	<meta charset="utf-8"/>
+    <title>三生</title>
+    <link href="/css/uk/uikit.min.css" rel="stylesheet">
+    <link href="/css/uk/sticky.css" rel="stylesheet">
+    <link rel='stylesheet' href='/css/animate.css'/>
+    <link rel='stylesheet' href='/css/pace-theme-flash.css'/>
+    <link rel='stylesheet' href='/Font-Awesome-4.2.0/css/font-awesome.min.css'/>
+    <link rel='stylesheet' href='/css/style.css'/>
+	  
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <script src="/js/pace.min.js"></script>
+    <script src="/js/uk/uikit.min.js"></script>
+    <script src="/js/uk/sticky.min.js"></script>
+    <script src="/js/angular.js"></script>
+    <script src="/js/angular-route.min.js"></script>
+    <script src="/js/angular-resource.js"></script>
+    <script src="/app/js/app.js"></script>
+    <script src="/app/js/controllers.js"></script>
+    <script src="/app/js/services.js"></script>
+    <script src="/app/js/directives.js"></script>
+  </head>
+  <body>
+    <nav id="navbar" class="uk-navbar" data-uk-sticky>
+      <div class="uk-container uk-container-center">
+        <a href="/#/" class="uk-navbar-brand">Sunyson</a>
+        <ul class="uk-navbar-nav">
+            <li><a href="#/blog"><span>文章</span></a></li>
+            <li><a href="#/labs">实验室</a></li>
+            <li><a href="/about" target="_blank">关于</a></li>
+        </ul>
+      </div>
+    </nav>
+    
+    <div class="animated fadeIn" ng-view >
+    </div>
+
+    <div class="app-footer">
+        <div class="uk-container uk-container-center">
+            <div class="uk-grid">
+                <div class="about-me uk-width-3-10">
+                    <h3>我是sunyson</h3>
+                </div>
+                <div class="power uk-width-7-10">
+                    <div>Design & code by @sunyson</div>
+                    <div>Base on nodeJS</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
