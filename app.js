@@ -25,7 +25,7 @@ global.R = {};
 global.F = {};
 
 /*登录拦截*/
-app.use(function *(next){
+/*app.use(function *(next){
 	var url = this.url.toLowerCase();
 	if(url.indexOf('admin')>=0){
 		if(url != '/admin/login'&&!this.session.user){
@@ -33,7 +33,7 @@ app.use(function *(next){
 		}
 	};
 	yield next;
-});
+});*/
 
 
 app.use(function *(next){
@@ -58,5 +58,5 @@ ejs(app,{
 	end:'%>'
 });
 
-app.listen(3000);
+app.listen(80);
 console.log('server is runing in 3000...')
