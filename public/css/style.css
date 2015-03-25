@@ -1,7 +1,7 @@
-a:hover {text-decoration:none;}
 body,h1,h2,h3,h4,h5 {font-family:Helvetica,STHeiti STXihei,Microsoft JhengHei,Microsoft YaHei,Tohoma,Arial;}
+a:hover {text-decoration:none;}
 
-/*ui*/
+
 #navbar{box-shadow:1px 1px 10px #999999;}
 #navbar a{font-family:Helvetica,STHeiti STXihei,Microsoft JhengHei,Microsoft YaHei,Tohoma,Arial;}
 .app-home{color: #33CC33;}
@@ -39,7 +39,6 @@ body,h1,h2,h3,h4,h5 {font-family:Helvetica,STHeiti STXihei,Microsoft JhengHei,Mi
 #paginator{margin: 40px 0  30px 15px;}
 
 
-/*system*/
 #wrapper{padding-left:72px;}
 #page-wrapper{}
 #left-nav{padding:0;background:#333;height:100%;top:40px;left:0;color:#fff;position:fixed;overflow:hidden;z-index:999;}
