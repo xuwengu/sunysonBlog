@@ -28,11 +28,7 @@ gulp.task('fontend-js-app',function(){
 		.pipe(gulp.dest('./public/dist/ui/js'));
 });
 gulp.task('fontend-css',function(){
-	gulp.src(['./bower_components/pace/themes/green/pace-theme-flash.css'
-		,'./public/app/css/animate.css'
-		,'/public/css/style.css'])
-		.pipe(concat('app.css'))
-		.pipe(gulp.dest('./public/dist/ui/css'))
+	gulp.src(['./public/css/style.css'])
 		.pipe(cssmin())
 		.pipe(gulp.dest('./public/dist/ui/css'));
 });
