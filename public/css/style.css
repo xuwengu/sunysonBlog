@@ -13,8 +13,7 @@ a:hover {text-decoration:none;}
 .uk-navbar-nav li:hover a{color:#33CC33;background: #fff;}
 .uk-open{color:#33CC33;background: #fff;}
 #navbar .uk-active a{color:#33CC33;background: #fff;}
-#app-framework{font-size: 2em;}
-#app-driver{font-size: 2.6em;}
+
 .app-footer{background: #333;color: #888;padding:50px 0;}
 .app-footer .about-me{padding-left: 50px;}
 .app-footer h3{line-height: 1.6;margin-bottom: .5em;font-size: 16px;color: #888;}
@@ -23,6 +22,8 @@ a:hover {text-decoration:none;}
 .app-home-logo img{width:160px;height:160px;}
 .app-node-panel{background: #CCCCCC;padding:50px 0;}
 .app-node-logo{width:282px;margin-bottom: 20px;}
+#app-framework{font-size: 2em;}
+#app-driver{font-size: 2.6em;}
 
 /*blog-list*/
 .blog{margin-top: 50px;}

@@ -28,9 +28,19 @@ gulp.task('fontend-js-app',function(){
 		.pipe(gulp.dest('./public/dist/ui/js'));
 });
 gulp.task('fontend-css',function(){
-	gulp.src(['./public/css/style.css'])
+	gulp.src(['./public/css/uikit.css'])
 		.pipe(cssmin())
 		.pipe(gulp.dest('./public/dist/ui/css'));
+});
+
+gulp.task('sys-js-lib',function(){
+	gulp.src(['./bower_components/angular/angular.js'
+		,'./bower_components/angular-route/angular-route.js'
+		,'./bower_components/angular-resource/angular-resource.js'])
+		.pipe(concat('lib.min.js'))
+		.pipe(gulp.dest('./public/dist/sys/js'))
+		.pipe(uglify())
+		.pipe(gulp.dest('./public/dist/sys/js'));
 });
 
 gulp.task('default',function(){
