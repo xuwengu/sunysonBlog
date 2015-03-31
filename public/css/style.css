@@ -18,7 +18,7 @@ a:hover {text-decoration:none;}
 .app-footer .about-me{padding-left: 50px;}
 .app-footer h3{line-height: 1.6;margin-bottom: .5em;font-size: 16px;color: #888;}
 /*main*/
-.app-home-logo{padding: 10% 0 16% 0;}
+.app-home-logo{padding: 10% 0 20% 0;}
 .app-home-logo img{width:160px;height:160px;}
 .app-node-panel{background: #CCCCCC;padding:50px 0;}
 .app-node-logo{width:282px;margin-bottom: 20px;}
@@ -27,15 +27,28 @@ a:hover {text-decoration:none;}
 
 /*blog-list*/
 .blog{margin-top: 50px;}
-.blog-content p{line-height: 1.8;margin: 1em 0;font-size:1.2em;margin-bottom: 100px;}
-#blog-list{margin-top: 1.5%;} 
+
+#blog-list{margin-top: 1.5%;}
+@media screen and (max-width: 320px){
+	.blog-logo-info{display: none;}
+	#blog-list .uk-width-8-10{width:100%;}
+	.blog-list-publish-info{display: block;width:100%;text-align: left!important;}
+} 
 .app-blog a{transition:all .4s ease 0s;}
 .app-blog{border-bottom: 1px solid #ddd;padding-bottom: 10px;}
-.logo-info{padding:100% 0;}
-.logo-info img{width:100px;height:100px;margin: 0 auto;display: block;}
 .disabled{pointer-events: none;cursor: default;}
 #paginator{margin: 40px 0  30px 15px;}
-            
+
+/*blog-content*/
+@media screen and (max-width: 320px){
+	#blog-detail .uk-width-8-10{width:100%;}
+}
+.blog-content{margin-bottom: 100px;}
+.blog-content p{line-height: 1.8;margin: 1em 0;font-size:1.2em;}
+.blog-logo-info{position: fixed;padding-top: 10%;}
+.blog-logo-info img{width:100px;height:100px;margin: 0 auto;display: block;}
+#disqus_thread{margin: 30px 0;}
+
 
 #wrapper{padding-left:72px;}
 #left-nav{padding:0;background:#333;height:100%;top:40px;left:0;color:#fff;position:fixed;overflow:hidden;z-index:999;}

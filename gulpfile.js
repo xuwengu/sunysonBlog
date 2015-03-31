@@ -28,7 +28,7 @@ gulp.task('fontend-js-app',function(){
 		.pipe(gulp.dest('./public/dist/ui/js'));
 });
 gulp.task('fontend-css',function(){
-	gulp.src(['./public/css/uikit.css'])
+	gulp.src(['./public/css/style.css'])
 		.pipe(cssmin())
 		.pipe(gulp.dest('./public/dist/ui/css'));
 });
