@@ -15,7 +15,6 @@ module.exports = function(app){
 	app.post('/admin/login',function *(next){
 		var body = yield parse(this);
 		var user = yield userModel.where({name:body.name}).findOne().exec();
-		console.log(user);
 		if(user!=null){
 			if(user.pswd==body.pswd){
 				console.log('login success...')

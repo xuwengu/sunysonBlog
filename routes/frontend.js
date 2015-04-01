@@ -8,7 +8,7 @@ module.exports = function (app) {
 	app.get('/blog',function *(next){
 		var currentPage = this.query.p || 1; //当前页
 		if(!this.query.counts){
-			var perPage = 3;
+			var perPage = 6;
 			var blogList = yield blogModel.find().where({isPublish:true}).skip((currentPage-1)*perPage).limit(perPage).sort({createTime:-1}).lean().exec();
 			for(var i=0;i<blogList.length;i++){
 				blogList[i].createTime =  Fn.date.dgm(blogList[i].createTime);

@@ -9,12 +9,11 @@ sunysonDirective.directive('pagination',['$location','$routeParams',function($lo
 		templateUrl:'/app/views/paginator.html',
 		replace:true, 
 		link:function(scope,element,attrs){
-			scope.totalPage = [];
+			scope.totalPage = [1];
 			scope.currentPage = $routeParams.p || 1;
 			scope.prePage  = parseInt(scope.currentPage) - 1;
 			scope.nextPage  = parseInt(scope.currentPage) + 1;
-			
-			for(var i=1;i<(scope.totalCounts/scope.perPage+1);i++){
+			for(var i=1;i<(scope.totalCounts>scope.perPage?scope.totalCounts/scope.perPage+1:1);i++){
 				scope.totalPage.push(i);
 			}
 			

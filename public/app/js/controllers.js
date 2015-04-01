@@ -6,11 +6,18 @@ frontendControllers.run(['$rootScope','$http','Blog',function($rootScope,$http,B
 	});
 }]);
 
+frontendControllers.controller('mainCtrl',['$scope',
+	function($scope){
+		$scope.active = 'uk-active';
+		$scope.toggleActive = function(){
+		}
+}]);
+
 frontendControllers.controller('blogListCtrl',['$scope','Blog','$sce','$location',
 	function($scope,Blog,$sce,$location){
 		$scope.blogList = Blog.query({p:$location.search().p});
 		$scope.totalCounts = $scope.blogCounts;	
-		$scope.perPage = 3;
+		$scope.perPage = 6;
 }]);
 
 frontendControllers.controller('blogDetailCtrl',['$scope','$routeParams','Blog','$sce',

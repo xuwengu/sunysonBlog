@@ -4,16 +4,9 @@ a:hover {text-decoration:none;}
 /*index*/
 #navbar{box-shadow:1px 1px 10px #999999;}
 #navbar a{font-family:Helvetica,STHeiti STXihei,Microsoft JhengHei,Microsoft YaHei,Tohoma,Arial;}
-.app-home{color: #33CC33;}
-.app-home:visited{color: #33CC33;}
-.uk-navbar-brand:hover{color:#33CC33;}
-.uk-navbar{background: #fff;}
-.uk-navbar .uk-active a{color:#33CC33;background: #fff;}
+.uk-active{color:#33CC33;background: #fff;}
 .uk-navbar-nav li a{font-size: 16px;}
-.uk-navbar-nav li:hover a{color:#33CC33;background: #fff;}
 .uk-open{color:#33CC33;background: #fff;}
-#navbar .uk-active a{color:#33CC33;background: #fff;}
-
 .app-footer{background: #333;color: #888;padding:50px 0;}
 .app-footer .about-me{padding-left: 50px;}
 .app-footer h3{line-height: 1.6;margin-bottom: .5em;font-size: 16px;color: #888;}
