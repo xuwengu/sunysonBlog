@@ -9,12 +9,16 @@ sunysonDirective.directive('pagination',['$location','$routeParams',function($lo
 		templateUrl:'/app/views/paginator.html',
 		replace:true, 
 		link:function(scope,element,attrs){
-			scope.totalPage = [1];
+			scope.totalPage = [];
 			scope.currentPage = $routeParams.p || 1;
 			scope.prePage  = parseInt(scope.currentPage) - 1;
 			scope.nextPage  = parseInt(scope.currentPage) + 1;
-			for(var i=1;i<(scope.totalCounts>scope.perPage?scope.totalCounts/scope.perPage+1:1);i++){
-				scope.totalPage.push(i);
+			if (scope.totalCounts>scope.perPage) {
+				for(var i=1;i<(scope.totalCounts/scope.perPage+1);i++){
+					scope.totalPage.push(i);
+				}
+			}else{
+				scope.totalPage.push(1);
 			}
 			
 			scope.hasNext = function(currentPage){
@@ -32,6 +36,11 @@ sunysonDirective.directive('pagination',['$location','$routeParams',function($lo
 					return false;
 				}
 			};
+
+			scope.isCurrent = function(index){
+				console.log(scope.currentPage == index);
+				return scope.currentPage == index;
+			}
 
 			scope.url =  $location.path()+'?p=';
 		}

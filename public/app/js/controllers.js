@@ -8,8 +8,13 @@ frontendControllers.run(['$rootScope','$http','Blog',function($rootScope,$http,B
 
 frontendControllers.controller('mainCtrl',['$scope',
 	function($scope){
-		$scope.active = 'uk-active';
-		$scope.toggleActive = function(){
+		$scope.active = '/';
+
+		$scope.isActive = function(active){
+			return $scope.active === active;
+		}
+		$scope.setActive =function(active){
+			$scope.active = active;
 		}
 }]);
 

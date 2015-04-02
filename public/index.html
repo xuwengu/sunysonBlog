@@ -13,9 +13,9 @@
   <body>
     <nav id="navbar" class="uk-navbar" data-uk-sticky >
       <div class="uk-container uk-container-center" ng-Controller="mainCtrl" >
-        <a href="/#/" class="app-home uk-navbar-brand" ng-class="active">Sunyson</a>
         <ul class="uk-navbar-nav" >
-            <li ng-class="active"><a href="#/blog" ng-click="toggleActive()"><span>博客</span></a></li>
+            <li ng-class="{active:isActive('/')}"><a ng-click="setActive('/')" href="/#/"><span>Sunyson</span></a></li>
+            <li ng-class="{active:isActive('/blog')}"><a ng-click="setActive('/blog')" href="#/blog"><span>博客</span></a></li>
             <!-- <li><a href="#/labs">实验室</a></li> -->
             <li><a href="/about" target="_blank">关于</a></li>
         </ul>

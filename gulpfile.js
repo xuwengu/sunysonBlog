@@ -43,6 +43,7 @@ gulp.task('sys-js-lib',function(){
 		.pipe(gulp.dest('./public/dist/sys/js'));
 });
 
-gulp.task('default',function(){
-
+gulp.task('default',[],function(){
+	gulp.watch(['./public/css/*.css'],['fontend-css']);
+	gulp.watch(['./public/app/js/*.js'],['fontend-js-app']);
 });

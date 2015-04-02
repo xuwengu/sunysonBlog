@@ -1,6 +1,6 @@
 <ul class="uk-pagination" id="paginator">
 	<li><a ng-href="/#{{url}}{{prePage}}" ng-class="hasPre(currentPage) ? 'disabled':''">上一页</a></li>
-	<li ng-repeat="page in totalPage">
+	<li ng-repeat="page in totalPage" ng-class="isCurrent($index+1) ? 'paginator-active':''">
 		<a ng-href="/#{{url}}{{page}}">{{page}}</a>
 	</li>
 	<li>
