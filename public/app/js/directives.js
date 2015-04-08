@@ -38,7 +38,6 @@ sunysonDirective.directive('pagination',['$location','$routeParams',function($lo
 			};
 
 			scope.isCurrent = function(index){
-				console.log(scope.currentPage == index);
 				return scope.currentPage == index;
 			}
 
@@ -46,3 +45,10 @@ sunysonDirective.directive('pagination',['$location','$routeParams',function($lo
 		}
 	}
 }]);
+
+sunysonDirective.directive('footer',function(){
+	return {
+		restrict:'E',
+		templateUrl:'/app/views/footer.html'
+	}
+});

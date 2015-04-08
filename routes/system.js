@@ -3,6 +3,7 @@ var blogModel = require('../model/blog');
 var userModel = require('../model/user');
 var markdown = require('markdown').markdown;
 var Fn = require('../util/init')();
+var crypto = require('crypto');
 
 module.exports = function(app){
 
@@ -15,6 +16,8 @@ module.exports = function(app){
 	app.post('/admin/login',function *(next){
 		var body = yield parse(this);
 		var user = yield userModel.where({name:body.name}).findOne().exec();
+		var md5 = crypto.createHash('md5');
+		body.pswd = md5.update(body.pswd).digest('hex');
 		if(user!=null){
 			if(user.pswd==body.pswd){
 				console.log('login success...')
@@ -40,6 +43,8 @@ module.exports = function(app){
 	});
 	app.post('/admin/register',function *(next){
 		var user = yield parse(this);
+		var md5 = crypto.createHash('md5');
+		user.pswd = md5.update(user.pswd).digest('hex');
 		userModel(user).save(function(err,user){
 			if(err){
 				console.log(err);

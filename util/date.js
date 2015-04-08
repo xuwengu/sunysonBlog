@@ -1,6 +1,4 @@
-/**
- * Created by ken.xu on 14-1-27.
- */
+
 module.exports = {
 
     time:function(datetime){

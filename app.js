@@ -1,33 +1,43 @@
 var koa = require('koa');
 var path = require('path');
+var fs = require('fs');
 var ejs = require('koa-ejs');
 var serve = require('koa-static');
 var router = require('koa-router');
 var session = require('koa-session');
-var frontend =require('./routes/frontend');
-var system =require('./routes/system');
-var logger = require('koa-logger');
 var flash = require('koa-flash');
 var parse = require('co-body');
 var conditional =require('koa-conditional-get');
 var etag = require('koa-etag');
 var markdown = require('markdown').markdown;
 
+var logs = require('./util/logs');
+var init = require('./util/init');
+var frontend =require('./routes/frontend');
+var system =require('./routes/system');
 var blogModel = require('./model/blog');
 var userModel = require('./model/user');
+var config = require('./config/config');
 var app = koa();
 
+/*全局配置*/
+global.C = config(__dirname);
+
+/*全局函数*/
+global.F = init;
+
+/*304响应*/
 app.use(conditional());
 app.use(etag());
 
-//app.use(logger());
 app.use(session(app));
-
 app.use(serve(__dirname+'/public',{maxage:60*60*24*15}));
 app.use(flash());
 app.keys = ['user'];
-global.R = {};
-global.F = {};
+
+/*访问日志*/
+app.use(logs());
+
 
 /*登录拦截*/
 app.use(function *(next){
@@ -40,10 +50,6 @@ app.use(function *(next){
 	yield next;
 });
 
-
-app.use(function *(next){
-	yield next;
-});
 app.use(router(app));
 
 /*后台路由*/
@@ -63,5 +69,19 @@ ejs(app,{
 	end:'%>'
 });
 
-app.listen(80);
-console.log('server is runing in 3000...')
+/*function logger(){
+	return function*(next){
+		console.log(this.url);
+		fs.appendFile(__dirname+'/logs/2015-04-3.log',this.url+' '+this.ip+'\n',function(err){
+			if(err){
+				console.log(err);
+			}
+		});
+		yield next;
+	}
+}
+*/
+
+
+app.listen(C.port);
+console.log('server is runing in '+C.port+'...');
