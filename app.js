@@ -15,6 +15,7 @@ var logs = require('./util/logs');
 var init = require('./util/init');
 var frontend =require('./routes/frontend');
 var system =require('./routes/system');
+var cms =require('./routes/cms');
 var blogModel = require('./model/blog');
 var userModel = require('./model/user');
 var config = require('./config/config');
@@ -36,10 +37,10 @@ app.use(flash());
 app.keys = ['user'];
 
 /*访问日志*/
-app.use(logs());
+//app.use(logs());
 
 
-/*登录拦截*/
+/*登录拦截
 app.use(function *(next){
 	var url = this.url.toLowerCase();
 	if(url.indexOf('admin')>=0){
@@ -48,12 +49,12 @@ app.use(function *(next){
 		}
 	};
 	yield next;
-});
+});*/
 
 app.use(router(app));
 
 /*后台路由*/
-system(app);
+cms(app);
 
 /*前台路由*/
 frontend(app);
@@ -68,20 +69,6 @@ ejs(app,{
 	begin:'<%',
 	end:'%>'
 });
-
-/*function logger(){
-	return function*(next){
-		console.log(this.url);
-		fs.appendFile(__dirname+'/logs/2015-04-3.log',this.url+' '+this.ip+'\n',function(err){
-			if(err){
-				console.log(err);
-			}
-		});
-		yield next;
-	}
-}
-*/
-
 
 app.listen(C.port);
 console.log('server is runing in '+C.port+'...');
