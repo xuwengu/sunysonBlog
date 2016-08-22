@@ -1,0 +1,15 @@
+.container{
+    width:910px;margin:0 auto;
+}
+.pull-left{
+    float:left;
+}
+.pull-right{
+    float:right;
+}
+.text-center{
+    text-align: center
+}
+header{
+
+}
