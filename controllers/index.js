@@ -1,7 +1,10 @@
-const router = require('express')().router()
+const router = require('express').Router()
 
 router.get('/',(req,res,next)=>{
-    render('/index')
+    res.render('index')
 })
 
+router.use((req,res,next)=>{
+    res.render('404')
+})
 module.exports = router
