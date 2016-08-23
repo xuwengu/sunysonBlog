@@ -15,6 +15,7 @@ html,body{height:100%}
 .text-center{
     text-align: center
 }
+.title-underline{width:100px;height:2px;background:#999}
 header{
     height:90px;font-size: 20px;
 }
@@ -24,7 +25,7 @@ footer{
 ul{
     list-style: none
 }
-a{text-decoration: none;color:#c4b3b5}
+a{text-decoration: none;color:#999}
 a:hover{color:#333;transition: color .5s ease-out}
 
 @font-face {
@@ -43,3 +44,7 @@ ul.list-inline li{
 }
 
 header nav ul li a{margin-left:45px;}
+
+.page-about h1{
+    font-size: 40px;color:#333
+}
