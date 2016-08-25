@@ -4,6 +4,10 @@ router.get('/',(req,res,next)=>{
     res.render('index')
 })
 
+router.get('/about',(req,res,next)=>{
+    res.render('about')
+})
+
 router.use((req,res,next)=>{
     res.render('404')
 })
