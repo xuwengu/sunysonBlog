@@ -5,44 +5,4 @@ var rename = require('gulp-rename');
 var cssmin = require('gulp-cssmin');
 var rev = require('gulp-rev');
 var minify = require('gulp-minify');
-gulp.task('fontend-js-lib',function(){
-	gulp.src(['./bower_components/jquery/dist/jquery.js'
-		,'./bower_components/pace/pace.js'
-		,'./bower_components/uikit/js/uikit.js'
-		,'./bower_components/uikit/js/components/sticky.js'
-		,'./bower_components/angular/angular.js'
-		,'./bower_components/angular-route/angular-route.js'
-		,'./bower_components/angular-resource/angular-resource.js'])
-		.pipe(concat('lib.min.js'))
-		.pipe(gulp.dest('./public/dist/ui/js'))
-		.pipe(uglify())
-		.pipe(gulp.dest('./public/dist/ui/js'));
-});
 
-gulp.task('fontend-js-app',function(){
-	gulp.src(['./public/app/js/*.js'])
-		.pipe(concat('app.js'))
-		.pipe(gulp.dest('./public/dist/ui/js'))
-		.pipe(uglify())
-		.pipe(gulp.dest('./public/dist/ui/js'));
-});
-gulp.task('fontend-css',function(){
-	gulp.src(['./public/css/style.css'])
-		.pipe(cssmin())
-		.pipe(gulp.dest('./public/dist/ui/css'));
-});
-
-gulp.task('sys-js-lib',function(){
-	gulp.src(['./bower_components/angular/angular.js'
-		,'./bower_components/angular-route/angular-route.js'
-		,'./bower_components/angular-resource/angular-resource.js'])
-		.pipe(concat('lib.min.js'))
-		.pipe(gulp.dest('./public/dist/sys/js'))
-		.pipe(uglify())
-		.pipe(gulp.dest('./public/dist/sys/js'));
-});
-
-gulp.task('default',[],function(){
-	gulp.watch(['./public/css/*.css'],['fontend-css']);
-	gulp.watch(['./public/app/js/*.js'],['fontend-js-app']);
-});

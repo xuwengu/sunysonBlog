@@ -1,0 +1,50 @@
+*{
+    line-height: 1.1;
+    font-family: "tahoma","Helvetica","Microsoft Yahei",sans-serif
+}
+html,body{height:100%}
+.container{
+    width:910px;margin:0 auto;
+}
+.pull-left{
+    float:left;
+}
+.pull-right{
+    float:right;
+}
+.text-center{
+    text-align: center
+}
+.title-underline{width:100px;height:2px;background:#999}
+header{
+    height:90px;font-size: 20px;padding-top:90px
+}
+footer{
+    background:#f2f2f2;height: 183px;position: absolute;bottom:0;width:100%;margin-top:-183px;padding-top:80px
+}
+ul{
+    list-style: none
+}
+a{text-decoration: none;color:#999}
+a:hover{color:#333;transition: color .5s ease-out}
+
+@font-face {
+  font-family: 'iconfont';
+  src: url('//at.alicdn.com/t/font_1471886596_369161.eot'); /* IE9*/
+  src: url('//at.alicdn.com/t/font_1471886596_369161.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('//at.alicdn.com/t/font_1471886596_369161.woff') format('woff'), /* chrome、firefox */
+  url('//at.alicdn.com/t/font_1471886596_369161.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('//at.alicdn.com/t/font_1471886596_369161.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+.iconfont{font-family:"iconfont";
+font-size:16px;font-style:normal;}
+
+ul.list-inline li{
+    float:left
+}
+
+header nav ul li a{margin-left:45px;}
+
+.page-about h1{
+    font-size: 40px;color:#333
+}

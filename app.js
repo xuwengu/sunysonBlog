@@ -1,74 +1,60 @@
-var koa = require('koa');
+var express = require('express');
 var path = require('path');
-var fs = require('fs');
-var ejs = require('koa-ejs');
-var serve = require('koa-static');
-var router = require('koa-router');
-var session = require('koa-session');
-var flash = require('koa-flash');
-var parse = require('co-body');
-var conditional =require('koa-conditional-get');
-var etag = require('koa-etag');
-var markdown = require('markdown').markdown;
+var favicon = require('serve-favicon');
+var logger = require('morgan');
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var expressLayouts = require('express-ejs-layouts');
 
-var logs = require('./util/logs');
-var init = require('./util/init');
-var frontend =require('./routes/frontend');
-var system =require('./routes/system');
-var cms =require('./routes/cms');
-var blogModel = require('./model/blog');
-var userModel = require('./model/user');
-var config = require('./config/config');
-var app = koa();
+var app = express();
 
-/*全局配置*/
-global.C = config(__dirname);
+// view engine setup
+app.engine('.html', require('ejs').__express);
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'html');
+app.use(expressLayouts);
 
-/*全局函数*/
-global.F = init;
+// uncomment after placing your favicon in /public
+//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
 
-/*304响应*/
-app.use(conditional());
-app.use(etag());
-
-app.use(session(app));
-app.use(serve(__dirname+'/public',{maxage:60*60*24*15}));
-app.use(flash());
-app.keys = ['user'];
-
-/*访问日志*/
-//app.use(logs());
+app.use(require('./controllers'));
 
 
-/*登录拦截
-app.use(function *(next){
-	var url = this.url.toLowerCase();
-	if(url.indexOf('admin')>=0){
-		if(url != '/admin/login'&&!this.session.user){
-			this.redirect('/admin/login');
-		}
-	};
-	yield next;
-});*/
-
-app.use(router(app));
-
-/*后台路由*/
-cms(app);
-
-/*前台路由*/
-frontend(app);
-
-ejs(app,{
-	root:path.join(__dirname,'views'),
-	layout:false,
-	viewExt:'html',
-	cache:false,
-	debug:true,
-	locals:this,
-	begin:'<%',
-	end:'%>'
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
 
-app.listen(C.port);
-console.log('server is runing in '+C.port+'...');
+// error handlers
+
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'development') {
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
+    });
+  });
+}
+
+// production error handler
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {}
+  });
+});
+
+
+module.exports = app;
