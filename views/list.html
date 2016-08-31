@@ -1,11 +1,34 @@
 <%- contentFor('body')%>
+<style>
+    .title-list .item:nth-child(1){
+        transform-origin:center center -89.5px;
+        transform:translateZ(89.5px) rotateX(-40deg)
+    }
+    .title-list .item:nth-child(2){
+        transform-origin:center center -89.5px;
+        transform:translateZ(89.5px) rotateX(-60deg)
+    }
+    .title-list .item:nth-child(3){
+        transform-origin:center center -89.5px;
+        transform:translateZ(89.5px) rotateX(-80deg)
+    }
+    .title-list .item:nth-child(4){
+        transform-origin:center center -89.5px;
+        transform:translateZ(89.5px) rotateX(-100deg)
+    }
+    .title-list .item:nth-child(5){
+        transform-origin:center center -89.5px;
+        transform:translateZ(89.5px) rotateX(-120deg)
+    }
+
+</style>
 <div class="page-list">
-    <nav>
+    <div class="title-list">
         <div class="item">linux</div>
         <div class="item">angular.js</div>
         <div class="item">node.js</div>
         <div class="item">react.js</div>
         <div class="item">vue.js</div>
-    </nav>
+    </div>
     <div class="title-underline"></div>
 </div>

@@ -64,3 +64,7 @@ header nav ul li:first a{margin-left:0;}
     display: flex;justify-content: space-between;margin-bottom:100px;
 }
 .page-about section.checklist .category:nth-child(1){width: 200px}
+
+.page-list{
+    min-height:400px;
+}
