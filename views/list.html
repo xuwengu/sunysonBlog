@@ -1,34 +1,23 @@
 <%- contentFor('body')%>
 <style>
-    .title-list .item:nth-child(1){
-        transform-origin:center center -89.5px;
-        transform:translateZ(89.5px) rotateX(-40deg)
+    .picker-modal{
+        height:200px;position:relative;
+        -webkit-mask-box-image:linear-gradient(to top, transparent, transparent 5%, white 20%, white 80%, transparent 95%, transparent);
+        overflow:hidden;
     }
-    .title-list .item:nth-child(2){
-        transform-origin:center center -89.5px;
-        transform:translateZ(89.5px) rotateX(-60deg)
-    }
-    .title-list .item:nth-child(3){
-        transform-origin:center center -89.5px;
-        transform:translateZ(89.5px) rotateX(-80deg)
-    }
-    .title-list .item:nth-child(4){
-        transform-origin:center center -89.5px;
-        transform:translateZ(89.5px) rotateX(-100deg)
-    }
-    .title-list .item:nth-child(5){
-        transform-origin:center center -89.5px;
-        transform:translateZ(89.5px) rotateX(-120deg)
-    }
-
+    .picker-modal .picker-items-wrap{transform: translate3d(0px, 90px, 0px);}
+    .picker-modal .picker-item{height:36px;line-height:36px;color:#999}
+    .picker-modal .picker-item.active{color:#333}
 </style>
 <div class="page-list">
-    <div class="title-list">
-        <div class="item">linux</div>
-        <div class="item">angular.js</div>
-        <div class="item">node.js</div>
-        <div class="item">react.js</div>
-        <div class="item">vue.js</div>
+    <div class="picker-modal">
+    <div class="picker-items-wrap">
+        <div class="picker-item active">linux</div>
+        <div class="picker-item">angular.js</div>
+        <div class="picker-item">node.js</div>
+        <div class="picker-item">react.js</div>
+        <div class="picker-item">vue.js</div>
+    </div>
     </div>
     <div class="title-underline"></div>
 </div>
