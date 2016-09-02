@@ -1,8 +1,12 @@
 <%- contentFor('body')%>
 <style>
-    main{margin-bottom:100px;}
-    main .item{width:50%;float:left;padding:40px 40px 40px 0;;color:#555;font-size:14px;}
-    main .item:nth-child(even){padding-right:0;}
+    main{margin-bottom:100px;margin-left:-40px;margin-right:-40px;}
+    main .item{
+        width:50%;float:left;padding:40px;color:#555;font-size:16px;
+        transition:all .3s ease-out
+    }
+    main .item:hover{background:#f2f2f2;}
+    main .item:nth-child(even){}
     main .item .introduce{line-height:24px;}
     main .item .time-wrap{display:flex;justify-content:space-between;margin-top:30px;}
 </style>
@@ -27,7 +31,7 @@
             </div>
             <div class="time-wrap">
                 <div class="star">
-                    <i><i class="iconfont">&#xe607;</i></i>
+                    <i class="iconfont">&#xe607;</i>
                     <span>24</span>喜欢
                 </div>
                 <div class="time">一天前</div>
