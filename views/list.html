@@ -1,23 +1,39 @@
 <%- contentFor('body')%>
 <style>
-    .picker-modal{
-        height:200px;position:relative;
-        -webkit-mask-box-image:linear-gradient(to top, transparent, transparent 5%, white 20%, white 80%, transparent 95%, transparent);
-        overflow:hidden;
-    }
-    .picker-modal .picker-items-wrap{transform: translate3d(0px, 90px, 0px);}
-    .picker-modal .picker-item{height:36px;line-height:36px;color:#999}
-    .picker-modal .picker-item.active{color:#333}
+    main{margin-bottom:100px;}
+    main .item{width:50%;float:left;padding:40px 40px 40px 0;;color:#555;font-size:14px;}
+    main .item:nth-child(even){padding-right:0;}
+    main .item .introduce{line-height:24px;}
+    main .item .time-wrap{display:flex;justify-content:space-between;margin-top:30px;}
 </style>
 <div class="page-list">
-    <div class="picker-modal">
-    <div class="picker-items-wrap">
-        <div class="picker-item active">linux</div>
-        <div class="picker-item">angular.js</div>
-        <div class="picker-item">node.js</div>
-        <div class="picker-item">react.js</div>
-        <div class="picker-item">vue.js</div>
-    </div>
+    <div class="title-picker">
+        <select>
+            <option value="linux">linux</option>
+            <option value="angular.js">angular.js</option>
+            <option value="node.js">node.js</option>
+            <option value="react.js">react.js</option>
+            <option value="vue.js">vue.js</option>
+        </select>
     </div>
     <div class="title-underline"></div>
+    <main>
+        <% [1,2,3,4,5,6,7,8].forEach(item=>{%>
+        <div class="item">
+            <h3>ubuntu14.4搭建nginx,php开发环境</h3>
+            <div class="title-underline"></div>
+            <div class="introduce">
+                angularjs设计的时候并没有考虑js资源异步加载的实现，当系统过于庞大，模块过多时，我们的首页加载展现就成了问题。
+            </div>
+            <div class="time-wrap">
+                <div class="star">
+                    <i><i class="iconfont">&#xe607;</i></i>
+                    <span>24</span>喜欢
+                </div>
+                <div class="time">一天前</div>
+            </div>
+        </div>
+        <%})%>
+        <div class="clearfix"></div>
+    </main>
 </div>
