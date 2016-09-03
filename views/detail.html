@@ -1,23 +1,77 @@
-<%- contentFor('body')%>
+<%- contentFor('header')%>
 <style>
     .title{
-        display:flex;
+        display:flex;justify-content:space-between;
     }
+    .title i.iconfont{line-height:80px;font-size:32px;}
+    .time-wrap{
+        display:flex;justify-content:center;
+    }
+    .time-wrap span{margin-right:15px;}
+    .time-wrap span:last-child{margin-right:0}
+    .page-detail{width:970px;margin:0 auto;}
+    main .title-underline{margin-top:10px;}
+    main article{line-height:1.8}
+    main .bottom{
+        display:flex;justify-content:space-between;margin:100px 0;
+    }
+    main .bottom .tags{display: flex;}
+    main .bottom .tags .tag.btn{margin-right:10px;}
+    main .bottom .star-wrap span{margin-left:10px;line-height:40px;}
 </style>
+<%- contentFor('body')%>
 <div class="page-detail">
     <div class="title">
-        <i class="iconfont">&#xe607;</i>
+        <a href="javascript:;" class="prev"><i class="iconfont">&#xe602;</i></a>
         <h1>buntu14.4搭建nginx,php开发环境</h1>
-        <i class="iconfont">&#xe607;</i>
+        <a href="javascript:;" class="next"><i class="iconfont">&#xe603;</i></a>
     </div>
-    <div class="title-underline"></div>
-    <div class="time-wrap">
-        <span class="time">一天前</span>
-        <span class="star">
-            <i class="iconfont">&#xe607;</i>123喜欢
-        </span>
-        <span class="coments">
-            <i class="iconfont">&#xe607;</i>5评论
-        </span>
-    </div>
+    <main>
+        <div class="title-underline center"></div>
+        <div class="time-wrap">
+            <span class="time">一天前</span>
+            <span class="star">
+                <i class="iconfont">&#xe607;</i>123喜欢
+            </span>
+            <span class="coments">
+                <i class="iconfont">&#xe607;</i>5评论
+            </span>
+        </div>
+        <article>
+            angularjs设计的时候并没有考虑js资源异步加载的实现，当系统过于庞大，模块过多时，我们的首页加载展现就成了问题。
+                应用启动后不能直接用 module.controller 等方法，否则会报控制器未定义的错误，
+                见 问题
+                所以我们要做的就是
+                重新定义controller及其它方法
+                异步加载文件(require.js)
+                相关代码如下
+                index页面
+                <p>angularjs设计的时候并没有考虑js资源异步加载的实现，当系统过于庞大，模块过多时，我们的首页加载展现就成了问题。
+                应用启动后不能直接用 module.controller 等方法，否则会报控制器未定义的错误，
+                见 问题
+                所以我们要做的就是
+                重新定义controller及其它方法
+                异步加载文件(require.js)
+                相关代码如下
+                index页面</p>
+        </article>
+        <div class="bottom">
+            <div class="tags">
+                <%tags.forEach(item=>{%>
+                <div class="tag btn btn-default" data-id="<%=item.id%>"><%=item.name%></div>
+                <%})%>
+            </div>
+            <div class="star-wrap">
+                <span class="star">
+                    <i class="iconfont">&#xe607;</i>123
+                </span>
+                <span class="comment">
+                    <i class="iconfont">&#xe606;</i>123
+                </span>
+                <span class="share">
+                    <i class="iconfont">&#xe607;</i>分享
+                </span>
+            </div>
+        </div>
+    </main>
 </div>

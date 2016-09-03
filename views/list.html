@@ -22,7 +22,8 @@
     </div>
     <div class="title-underline"></div>
     <main>
-        <% [1,2,3,4,5,6,7,8].forEach(item=>{%>
+        <% [1,2,3,4,5,6,7,8].forEach((item,i)=>{%>
+        <a href="/detail/<%=i%>" target="_blank">
         <div class="item">
             <h3>ubuntu14.4搭建nginx,php开发环境</h3>
             <div class="title-underline"></div>
@@ -37,6 +38,7 @@
                 <div class="time">一天前</div>
             </div>
         </div>
+        </a>
         <%})%>
         <div class="clearfix"></div>
     </main>
