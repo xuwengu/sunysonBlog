@@ -3,6 +3,7 @@
     line-height: 1.1;
     font-family: "tahoma","Helvetica","Microsoft Yahei",sans-serif;
     box-sizing: border-box;
+    color:#555;
 }
 html,body{height:100%}
 .container{
