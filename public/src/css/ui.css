@@ -1,0 +1,27 @@
+/* ui */
+*{
+    line-height: 1.1;
+    font-family: "tahoma","Helvetica","Microsoft Yahei",sans-serif;
+    box-sizing: border-box;
+    color:#555;
+}
+html,body{height:100%}
+.container{
+    width:1170px;margin:0 auto;
+}
+.pull-left{
+    float:left;
+}
+.pull-right{
+    float:right;
+}
+.text-center{
+    text-align: center
+}
+.btn{width:84px;height:40px;text-align: center;line-height: 40px;border-radius: 10px;cursor: pointer}
+.btn-default{background:#ececec;transition:all .3s ease-out}
+.btn-default:hover{background: #d4d4d4;}
+.progress .out{height:2px;background:#999}
+.progress .out .inner{height:2px;background:#555}
+.clearfix{clear:both;float:none;}
+a{text-decoration:none;}

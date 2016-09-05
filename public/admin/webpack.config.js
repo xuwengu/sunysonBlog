@@ -7,12 +7,12 @@ module.exports = {
   devtool: 'inline-source-map',
 
   entry: {
-    admin:path.join(__dirname,'/src/app')
+    app:path.join(__dirname,'src/app')
   },
 
   output: {
     path: path.join(__dirname, '__build__'),
-    filename: 'app.js',
+    filename: '[name].js',
     chunkFilename: '[id].chunk.js',
     publicPath: '/__build__/'
   },
@@ -24,15 +24,15 @@ module.exports = {
     ]
   },
 
-  /*resolve: {
+  resolve: {
     alias: {
       'vue': 'vue/dist/vue.js',
-      'vue-router': path.join(__dirname, '..', 'src')
+      // 'vue-router': path.join(__dirname, '..', 'src')
     }
-  },*/
+  },
 
   // Expose __dirname to allow automatically setting basename.
-  context: __dirname,
+  // context: __dirname,
   node: {
     __dirname: true
   },
