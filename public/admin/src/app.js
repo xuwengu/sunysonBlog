@@ -43,4 +43,4 @@ new Vue({
       </div>
     </div>
   `
-}).$mount('#app')
+}).$mount('#app-top')
