@@ -37,11 +37,7 @@ router.get('/detail/:title',(req,res,next)=>{
     })
 })
 
-router.get('/admin',(req,res,next)=>{
-    res.render('admin',{
-        layout:false
-    })
-})
+router.use('/admin',require('./admin'))
 
 router.use((req,res,next)=>{
     res.render('404')

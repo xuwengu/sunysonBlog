@@ -9,6 +9,9 @@
 <script>
     export default{
         data(){
+            fetch('/admin/posts').then(res=>{
+                    console.log(res)
+                })
             return {}
         }
     }
