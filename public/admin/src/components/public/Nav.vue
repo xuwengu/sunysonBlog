@@ -1,7 +1,7 @@
 <style scoped>
 nav{width:90px;background:#f6f6f6;padding-top:100px;}
 nav .item{color:#999;text-align:center;height:60px;line-height:60px;cursor:pointer;}
-nav .item:hover{color:#0068d9}
+nav .item a:hover{color:#0068d9}
 </style>
 <template>
     <nav>
