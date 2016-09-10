@@ -26,6 +26,13 @@ router.get('/tags',(req,res,next)=>{
     })
 })
 
+router.post('/tags/update',(req,res,next)=>{
+    res.json({
+        code:0,
+        info:{result:1}
+    })
+})
+
 router.get('/system',(req,res,next)=>{
     res.render('admin/system',{
         layout:false

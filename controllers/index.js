@@ -40,7 +40,4 @@ router.get('/detail/:title',(req,res,next)=>{
 router.use('/admin',require('./admin'))
 router.use('/upload',require('./upload'))
 
-router.use((req,res,next)=>{
-    res.render('404')
-})
 module.exports = router
