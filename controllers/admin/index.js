@@ -12,7 +12,18 @@ router.get('/posts',(req,res,next)=>{
 })
 
 router.get('/tags',(req,res,next)=>{
-    res.json([])
+    res.json({
+        code:0,
+        info:{
+            tags:[
+                {id:1,title:'linux'},
+                {id:2,title:'node.js'},
+                {id:3,title:'angular.js'},
+                {id:4,title:'vue.js'},
+                {id:5,title:'react.js'},
+            ]
+        }
+    })
 })
 
 router.get('/system',(req,res,next)=>{

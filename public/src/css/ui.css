@@ -25,3 +25,5 @@ html,body{height:100%}
 .progress .out .inner{height:2px;background:#555}
 .clearfix{clear:both;float:none;}
 a{text-decoration:none;}
+.flex{display: flex}
+.flex-center{justify-content: space-between}

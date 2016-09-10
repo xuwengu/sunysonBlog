@@ -11,8 +11,10 @@
                         <div class="operation">
                             <a href="">编辑</a>
                         </div>
-                        <h4>{{item.title}}</h4>
-                        <span>{{item.last_update_time}}</span>
+                        <div class="flex flex-center">
+                            <h4>{{item.title}}</h4>
+                            <span>{{item.last_update_time}}</span>
+                        </div>
                     </div>
                     <div class="card-body">{{item.introduce}}</div>
                 </div>
@@ -28,7 +30,6 @@
             }
         },
         mounted:function(){
-            console.log(this)
             fetch('/admin/posts')
                 .then(res=>res.json())
                 .then(data=>{
