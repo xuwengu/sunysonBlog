@@ -8,6 +8,9 @@
             <div class="section-body">
                 <div class="card" v-for="item in items">
                     <div class="card-header">
+                        <div class="operation">
+                            <a href="">编辑</a>
+                        </div>
                         <h4>{{item.title}}</h4>
                         <span>{{item.last_update_time}}</span>
                     </div>
