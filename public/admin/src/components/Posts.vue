@@ -6,10 +6,10 @@
         <section>
             <h2 class="section-header">文章管理</h2>
             <div class="section-body">
-                <div class="card" v-for="item in items">
+                <div class="card" v-for="(item,index) in items">
                     <div class="card-header">
                         <div class="operation">
-                            <a href="">编辑</a>
+                            <router-link :to="{path:'posts/detail/'+item.id}">编辑</router-link>
                         </div>
                         <div class="flex flex-center">
                             <h4>{{item.title}}</h4>

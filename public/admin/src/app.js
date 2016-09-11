@@ -5,6 +5,7 @@ import vHeader from './components/public/Header.vue'
 import vNav from './components/public/Nav.vue'
 import Index from './components/Index.vue'
 import Posts from './components/Posts.vue'
+import PostsDetail from './components/PostsDetail.vue'
 import Tags from './components/Tags.vue'
 import System from './components/System.vue'
 
@@ -15,12 +16,14 @@ const router = new VueRouter({
 //   mode: 'hashbang',
 //   base: path.join(__dirname,'src'),
     base:'admin',
-  routes: [
-    { path: '/', component: Index },
-    { path: '/posts', component: Posts },
-    { path: '/tags', component: Tags },
-    { path: '/system', component: System },
-  ]
+    routes: [
+      { path: '/', component: Index},
+      { path: '/posts', component: Posts},
+      { path: '/posts/detail/:id', component: PostsDetail},
+      { path: '/tags', component: Tags},
+      { path: '/system', component: System},
+    ],
+    linkActiveClass:'active'
 })
 
 // 4. Create and mount root instance.
