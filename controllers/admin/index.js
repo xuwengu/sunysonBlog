@@ -66,4 +66,15 @@ router.get('/system',(req,res,next)=>{
     })
 })
 
+router.get('/settings',(req,res,next)=>{
+    let siteSettings = {
+        title:'Sunny-L的博客',
+        keywords:'blog,博客，footend，前端，互联网',
+        description:'Suny-L的博客',
+        slogan:'三分天注定，七分靠打拼'
+    }
+    res.app.locals.settings = siteSettings
+    res.json(siteSettings)
+})
+
 module.exports = router
