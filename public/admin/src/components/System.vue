@@ -1,9 +1,10 @@
 <style scoped>
 input{margin:10px 0;}
 .save{margin-bottom:20px;}
+#avator_img{width:200px;height:200px;}
 </style>
 <template>
-    <div class="page-system">
+    <div class="page-view page-system">
       <section>
           <h2 class="section-header">系统设置</h2>
           <div class="save">
@@ -27,8 +28,8 @@ input{margin:10px 0;}
                 <input type="text" name="name" v-model="settings.slogan">
             </div>
             <div class="form-control">
+                <img :src="settings.avator" id="avator_img"/>
                 <input type="file" id="input_avator" @change="uploadAvator" :key="settings.title">
-                <img :src="settings.avator"/>
             </div>
           </div>
       </section>

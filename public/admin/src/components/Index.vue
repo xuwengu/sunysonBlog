@@ -2,7 +2,7 @@
 
 </style>
 <template>
-    <div class="page-index">
+    <div class="page-view page-index">
         <section>
             <div class="row">
                 <div class="card card-blue">

@@ -7,9 +7,10 @@
         <link rel="stylesheet" type="text/css" href="/public/libs/normalize-css/normalize.css" />
         <link rel="stylesheet" type="text/css" href="/public/src/css/ui.css" />
         <style>
-        #app{height:100%}
+        #app{height:100%;overflow: hidden;}
         #app-container{display:flex;height:100%;}
-        .main-container{width:100%}
+        .main-container{width:100%;height:100%;}
+        .main-container .page-view{height:calc(100% - 68px);overflow-y: scroll}
         </style>
     </head>
     <body>

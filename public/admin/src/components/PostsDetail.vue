@@ -6,7 +6,7 @@
     .detail-content{min-height:50vh}
 </style>
 <template>
-<div class="page-post_detail">
+<div class="page-view page-post_detail">
     <div>
         <ul>
             <li><a href="">发布</a></li>
@@ -67,7 +67,7 @@
             update:function(e){
                 if(e.keyCode == 9){
                     e.preventDefault();
-                    e.target.value = e.target.value + '\t' 
+                    e.target.value = e.target.value + '\t'
                 }
                 this.detail.content = e.target.value
             }

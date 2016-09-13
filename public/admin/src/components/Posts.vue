@@ -2,7 +2,7 @@
 
 </style>
 <template>
-    <div class="page-system">
+    <div class="page-view page-system">
         <section>
             <h2 class="section-header">文章管理</h2>
             <div class="section-body">

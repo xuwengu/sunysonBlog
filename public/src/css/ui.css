@@ -5,7 +5,7 @@
     box-sizing: border-box;
     color:#555;
 }
-html,body{height:100%}
+html,body{height:100%;overflow: auto;}
 ul{list-style: none}
 p{margin-bottom:10px;margin-top:0;}
 input{padding:0 15px;}

@@ -2,7 +2,7 @@
 
 </style>
 <template>
-    <div class="page-tags">
+    <div class="page-view page-tags">
         <section>
             <h2 class="section-header">标签管理</h2>
             <div class="section-body">
@@ -27,7 +27,7 @@
         data:function(){
             return {
                 tags:[]
-            } 
+            }
         },
         created:function(){
             fetch('/admin/tags').
