@@ -1,3 +1,4 @@
 module.exports = {
-    upload_path:process.cwd()+'/uploads'
+    UPLOAD_PATH: process.cwd() + '/uploads/',
+    UPLOAD_DIR: '/uploads/'
 }

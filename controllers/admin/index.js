@@ -1,80 +1,110 @@
 const router = require('express').Router()
 
-router.get('/getCounts',(req,res,next)=>{
+router.get('/getCounts', (req, res, next) => {
     res.json({
-        counts:{
-            posts:12,
-            views:209,
-            messages:20
+        counts: {
+            posts: 12,
+            views: 209,
+            messages: 20
         }
     })
 })
-router.get('/posts',(req,res,next)=>{
-    let data = [1,2,3,4,5].map((item,items)=>{
+router.get('/posts', (req, res, next) => {
+    let data = [1, 2, 3, 4, 5].map((item, items) => {
         return {
-            id:item,
-            title:'buntu14.4搭建nginx,php开发环境',
-            introduce:'angularjs设计的时候并没有考虑js资源异步加载的实现，当系统过于庞大，模块过多时，我们的首页加载展现就成了问题。 应用启动后不能直接用 module.controller 等方法，否则会报控制器未定义的错误， 见 问题 所以我们要做的就是 重新定义controller及其它方法 异步加载文件(require.js) 相关代码如下 index页面',
-            last_update_time:"一天前"
+            id: item,
+            title: 'buntu14.4搭建nginx,php开发环境',
+            introduce: 'angularjs设计的时候并没有考虑js资源异步加载的实现，当系统过于庞大，模块过多时，我们的首页加载展现就成了问题。 应用启动后不能直接用 module.controller 等方法，否则会报控制器未定义的错误， 见 问题 所以我们要做的就是 重新定义controller及其它方法 异步加载文件(require.js) 相关代码如下 index页面',
+            last_update_time: "一天前"
         }
-    },{})
+    }, {})
     res.json(data)
 })
 
-router.get('/posts/detail/:id',(req,res,next)=>{
+router.get('/posts/detail/:id', (req, res, next) => {
     let detail = {
-        id:req.params.id,
-        title:'buntu14.4搭建nginx,php开发环境',
-        introduce:'angularjs设计的时候并没有考虑js资源异步加载的实现，当系统过于庞大，模块过多时，我们的首页加载展现就成了问题。 应用启动后不能直接用 module.controller 等方法，否则会报控制器未定义的错误， 见 问题 所以我们要做的就是 重新定义controller及其它方法 异步加载文件(require.js) 相关代码如下 index页面',
-        content:'## hello world',
-        last_update_time:"一天前",
-        create_time:'一个月前'
+        id: req.params.id,
+        title: 'buntu14.4搭建nginx,php开发环境',
+        introduce: 'angularjs设计的时候并没有考虑js资源异步加载的实现，当系统过于庞大，模块过多时，我们的首页加载展现就成了问题。 应用启动后不能直接用 module.controller 等方法，否则会报控制器未定义的错误， 见 问题 所以我们要做的就是 重新定义controller及其它方法 异步加载文件(require.js) 相关代码如下 index页面',
+        content: '## hello world',
+        last_update_time: "一天前",
+        create_time: '一个月前'
     }
     res.json({
-        code:0,
-        info:{
-            detail:detail
+        code: 0,
+        info: {
+            detail: detail
         }
     })
 })
 
-router.get('/tags',(req,res,next)=>{
+router.get('/tags', (req, res, next) => {
     res.json({
-        code:0,
-        info:{
-            tags:[
-                {id:1,title:'linux'},
-                {id:2,title:'node.js'},
-                {id:3,title:'angular.js'},
-                {id:4,title:'vue.js'},
-                {id:5,title:'react.js'},
-            ]
+        code: 0,
+        info: {
+            tags: [{
+                id: 1,
+                title: 'linux'
+            }, {
+                id: 2,
+                title: 'node.js'
+            }, {
+                id: 3,
+                title: 'angular.js'
+            }, {
+                id: 4,
+                title: 'vue.js'
+            }, {
+                id: 5,
+                title: 'react.js'
+            }, ]
         }
     })
 })
 
-router.post('/tags/update',(req,res,next)=>{
+router.post('/tags/update', (req, res, next) => {
     res.json({
-        code:0,
-        info:{result:1}
+        code: 0,
+        info: {
+            result: 1
+        }
     })
 })
 
-router.get('/system',(req,res,next)=>{
-    res.render('admin/system',{
-        layout:false
+router.get('/system', (req, res, next) => {
+    res.render('admin/system', {
+        layout: false
     })
 })
 
-router.get('/settings',(req,res,next)=>{
+router.get('/settings', (req, res, next) => {
     let siteSettings = {
-        title:'Sunny-L的博客',
-        keywords:'blog,博客，footend，前端，互联网',
-        description:'Suny-L的博客',
-        slogan:'三分天注定，七分靠打拼'
+        title: 'Sunny-L的博客',
+        keywords: 'blog,博客，footend，前端，互联网',
+        description: 'Suny-L的博客',
+        slogan: '三分天注定，七分靠打拼'
     }
     res.app.locals.settings = siteSettings
     res.json(siteSettings)
 })
+
+router.post('/settings', (req, res, next) => {
+    var upload = require('../upload/upload').single('avator')
+    upload(req, res, err => {
+        if (err) {
+            console.log(err)
+            return
+        }
+        let file = req.file
+        res.json({
+            code: 0,
+            info: {
+                result: 1
+            }
+        })
+    })
+})
+
+router.use('/upload', require('../upload'))
 
 module.exports = router

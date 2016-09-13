@@ -1,16 +1,20 @@
 const router = require('express').Router(),
-    upload = require('./upload').array('avatar',5)
+    config = require('../../config')
 
-router.post('/',(req,res,next)=>{
-    console.log(req.files)
-    upload(req,res,err=>{
-        if(err){
+router.post('/avator', (req, res, next) => {
+    let upload = require('./upload').single('avator')
+    upload(req, res, err => {
+        if (err) {
             console.log(err)
-            return 
+            return
         }
-        res.json({
-            code:0
-        })
+        if (req.file)
+            res.json({
+                code: 0,
+                info: {
+                    imgUrl: '/' + req.file.filename
+                }
+            })
     })
 })
 
