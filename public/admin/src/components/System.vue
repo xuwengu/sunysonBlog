@@ -5,7 +5,7 @@ input{margin:10px 0;}
 </style>
 <template>
     <div class="page-view page-system">
-      <section>
+      <section id="myscroll">
           <h2 class="section-header">系统设置</h2>
           <div class="save">
               <button type="button" class="btn btn-default" @click="save">更新</button>

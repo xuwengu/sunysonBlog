@@ -5,6 +5,7 @@
     <div class="page-view page-system">
         <section>
             <h2 class="section-header">文章管理</h2>
+            <router-link :to="{path:'posts/detail/add'}">新增</router-link>
             <div class="section-body">
                 <div class="card" v-for="(item,index) in items">
                     <div class="card-header">
@@ -35,6 +36,6 @@
                 .then(data=>{
                     this.items = data
                 })
-        }
+        },
     }
 </script>

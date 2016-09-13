@@ -13,35 +13,62 @@ import System from './components/System.vue'
 Vue.use(VueRouter)
 
 const router = new VueRouter({
-//   mode: 'hashbang',
-//   base: path.join(__dirname,'src'),
-    base:'admin',
-    routes: [
-      { path: '/', component: Index},
-      { path: '/posts', component: Posts},
-      { path: '/posts/detail/:id', component: PostsDetail},
-      { path: '/tags', component: Tags},
-      { path: '/system', component: System},
-    ],
-    linkActiveClass:'active'
+    //   mode: 'hashbang',
+    //   base: path.join(__dirname,'src'),
+    base: 'admin',
+    routes: [{
+        path: '/',
+        component: Index,
+        canActivate: function(transition) {
+            console.log(110)
+        }
+    }, {
+        path: '/posts',
+        component: Posts
+    }, {
+        path: '/posts/detail/:id',
+        component: PostsDetail
+    }, {
+        path: '/posts/detail/add',
+        component: PostsDetail
+    }, {
+        path: '/tags',
+        component: Tags
+    }, {
+        path: '/system',
+        component: System
+    }, ],
+    linkActiveClass: 'active'
+})
+
+router.afterEach(transition => {
+    setTimeout(function() {
+        var pageView = new IScroll('.page-view', {
+            mouseWheel: true,
+            scrollbars: true
+        })
+    }, 500)
 })
 
 // 4. Create and mount root instance.
 // Make sure to inject the router.
 // Route components will be rendered inside <router-view>.
 new Vue({
-  router,
-  components:{
-      vHeader,
-      vNav,
-  },
-  template: `
+    router,
+    components: {
+            vHeader,
+            vNav,
+        },
+        template:
+        `
     <div id="app">
       <div id="app-container">
         <vNav></vNaV>
         <div class="main-container">
             <vHeader></vHeader>
+            <transition name="fade">
             <router-view class="view"></router-view>
+            </transition>
         </div>
       </div>
     </div>
