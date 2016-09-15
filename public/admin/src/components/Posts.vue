@@ -24,6 +24,7 @@
     </div>
 </template>
 <script>
+    import timeago from 'timeago.js'
     export default{
         data(){
             return {
@@ -35,6 +36,10 @@
                 .then(res=>res.json())
                 .then(data=>{
                     if(data.code == 0){
+                        data.info.posts.forEach(item=>{
+                            item.create_time = timeago().format(new Date(item.create_time),'zh_CN')
+                            item.last_update_time = timeago().format(new Date(item.last_update_time),'zh_CN')
+                        })
                         this.items = data.info.posts
                     }
                 })

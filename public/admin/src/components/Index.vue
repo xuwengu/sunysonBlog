@@ -13,7 +13,7 @@
                 </div>
                 <div class="card card-orange">
                     <div>
-                        <strong>{{counts.views}}</strong>
+                        <strong>{{counts.views[0].views}}</strong>
                     </div>
                     <span>点击数</span>
                 </div>

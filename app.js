@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressLayouts = require('express-ejs-layouts');
+var log4j = require('./logger')
 
 var app = express();
 
@@ -42,6 +43,7 @@ app.use(function(req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
+        log4j.info(err)
         res.status(err.status || 500);
         res.render('error', {
             message: err.message,
@@ -54,7 +56,7 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    console.log(err)
+    log4j.info(err)
     res.render('error', {
         message: err.message,
         error: {}

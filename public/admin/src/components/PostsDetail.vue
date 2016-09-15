@@ -30,9 +30,9 @@ div[contenteditable="true"] {
 <div class="page-view page-post_detail">
     <div>
         <ul>
-            <li><a href="">发布</a></li>
-            <li><a href="">保存为草稿</a></li>
-            <li><a href="">删除</a></li>
+            <li><a href="javascript:;" @click="save(true)">发布</a></li>
+            <li><a href="javascript:;" @click="save(false)">保存为草稿</a></li>
+            <li><a href="javascript:;" @click="del">删除</a></li>
         </ul>
     </div>
     <div class="flex flex-center">
@@ -97,13 +97,36 @@ export default {
             }
             this.detail.content = e.target.value
         },
-        save: function(e) {
-            fetch('/admin/posts/add', {
-                    method: 'POST',
-                    body: this.detail
-                }).then(res => res.json())
+        save: function(is_publish) {
+            if (this.$route.params.id) {
+                let url = is_publish ? '/admin/posts/publish' : '/admin/posts/save_to_draft'
+                fetch(url, {
+                        method: 'POST',
+                        body: this.detail
+                    }).then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                    })
+            } else {
+                if (is_publish) {
+                    this.detail.is_publish = true
+                } else {
+                    this.detail.is_publish = false
+                }
+                fetch('/admin/posts/add', {
+                        method: 'POST',
+                        body: this.detail
+                    }).then(res => res.json())
+                    .then(data => {
+                        console.log(data)
+                    })
+            }
+        },
+        del: function() {
+            fetch('/admin/posts/del/' + this.detail._id)
+                .then(res => res.json())
                 .then(data => {
-                    console.log(data)
+                    console.log(data);
                 })
         }
     }
