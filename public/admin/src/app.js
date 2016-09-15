@@ -19,9 +19,6 @@ const router = new VueRouter({
     routes: [{
         path: '/',
         component: Index,
-        canActivate: function(transition) {
-            console.log(110)
-        }
     }, {
         path: '/posts',
         component: Posts
@@ -29,7 +26,7 @@ const router = new VueRouter({
         path: '/posts/detail/:id',
         component: PostsDetail
     }, {
-        path: '/posts/detail/add',
+        path: '/posts/add',
         component: PostsDetail
     }, {
         path: '/tags',

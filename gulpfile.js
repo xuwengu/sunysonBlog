@@ -12,8 +12,7 @@ gulp.task('dev',()=>{
         script:'bin/www',
         ignore:['public/**','node_modules'],
         env:{
-            'NODE_ENV':'developent'
+            'NODE_ENV':'development'
         }
     })
 })
-

@@ -1,4 +1,6 @@
-const router = require('express').Router()
+const router = require('express').Router(),
+postModel = require('../../model/blog'),
+logger = require('../../logger')
 
 router.get('/getCounts', (req, res, next) => {
     res.json({
@@ -9,32 +11,51 @@ router.get('/getCounts', (req, res, next) => {
         }
     })
 })
+
 router.get('/posts', (req, res, next) => {
-    let data = [1, 2, 3, 4, 5].map((item, items) => {
-        return {
-            id: item,
-            title: 'buntu14.4搭建nginx,php开发环境',
-            introduce: 'angularjs设计的时候并没有考虑js资源异步加载的实现，当系统过于庞大，模块过多时，我们的首页加载展现就成了问题。 应用启动后不能直接用 module.controller 等方法，否则会报控制器未定义的错误， 见 问题 所以我们要做的就是 重新定义controller及其它方法 异步加载文件(require.js) 相关代码如下 index页面',
-            last_update_time: "一天前"
+    logger.info('fetch posts ...')
+    postModel.find((err, posts) => {
+        if (err) {
+            console.log(err)
+            return
         }
-    }, {})
-    res.json(data)
+        res.json({
+            code:0,
+            info:{
+                posts
+            }
+        })
+    })
 })
 
 router.get('/posts/detail/:id', (req, res, next) => {
-    let detail = {
-        id: req.params.id,
-        title: 'buntu14.4搭建nginx,php开发环境',
-        introduce: 'angularjs设计的时候并没有考虑js资源异步加载的实现，当系统过于庞大，模块过多时，我们的首页加载展现就成了问题。 应用启动后不能直接用 module.controller 等方法，否则会报控制器未定义的错误， 见 问题 所以我们要做的就是 重新定义controller及其它方法 异步加载文件(require.js) 相关代码如下 index页面',
-        content: '## hello world',
-        last_update_time: "一天前",
-        create_time: '一个月前'
-    }
-    res.json({
-        code: 0,
-        info: {
-            detail: detail
+    postModel.where({_id:req.params.id}).findOne((err,post)=>{
+        if(err){
+            logger.error(err)
         }
+        res.json({
+            code:0,
+            info:{
+                post
+            }
+        })
+    })
+})
+
+router.post('/posts/add',(req,res,next)=>{
+    let post = req.body
+    postModel.create(post,(err,result)=>{
+        console.log('rs',result)
+        console.log('body',post);
+        if(err){
+            logger.error(err)
+        }
+        res.json({
+            code:0,
+            info:{
+                result:result
+            }
+        })
     })
 })
 
