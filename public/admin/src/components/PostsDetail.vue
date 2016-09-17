@@ -50,13 +50,19 @@ div[contenteditable="true"] {
             <div v-html="compileMarkdown(detail.content)"></div>
         </div>
     </div>
+    <swal text="成功" type="success"></swal>
 </div>
 </template>
 <script>
 import marked from 'marked'
 import _ from 'lodash'
 import timeago from 'timeago.js'
+import querystring from 'querystring'
+import swal from './public/swal.vue'
 export default {
+    components:{
+        swal
+    },
     data() {
         return {
             detail: {
@@ -98,29 +104,17 @@ export default {
             this.detail.content = e.target.value
         },
         save: function(is_publish) {
-            if (this.$route.params.id) {
-                let url = is_publish ? '/admin/posts/publish' : '/admin/posts/save_to_draft'
-                fetch(url, {
-                        method: 'POST',
-                        body: this.detail
-                    }).then(res => res.json())
-                    .then(data => {
-                        console.log(data)
-                    })
-            } else {
-                if (is_publish) {
-                    this.detail.is_publish = true
-                } else {
-                    this.detail.is_publish = false
-                }
-                fetch('/admin/posts/add', {
-                        method: 'POST',
-                        body: this.detail
-                    }).then(res => res.json())
-                    .then(data => {
-                        console.log(data)
-                    })
-            }
+            let url = is_publish ? '/admin/posts/publish' : '/admin/posts/save_to_draft'
+            fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded"
+                      },
+                    body: querystring.stringify(this.detail)
+                }).then(res => res.json())
+                .then(data => {
+                    console.log(data)
+                })
         },
         del: function() {
             fetch('/admin/posts/del/' + this.detail._id)

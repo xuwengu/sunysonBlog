@@ -54,7 +54,6 @@ input{margin:10px 0;}
             save:function(){
                 let formData = new FormData()
                 let file = document.getElementById('input_avator').files[0]
-                console.log(file)
                 formData.append('avator',file)
                 for(var key in this.settings){
                     formData.append(key,this.settings[key])

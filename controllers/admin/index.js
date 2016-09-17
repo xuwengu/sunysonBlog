@@ -98,24 +98,45 @@ router.get('/posts/detail/:id', (req, res, next) => {
 router.post('/posts/publish', (req, res, next) => {
     let post = req.body
     post.is_publish = true
-    postModel.findByIdAndUpdate(req.body.id, post, (err, result) => {
-        if (err) {
-            logger.info(err)
+    if (req.body._id) {
+        postModel.findByIdAndUpdate(req.body.id, post, (err, result) => {
+            if (err) {
+                logger.info(err)
+                res.json({
+                    code: -100,
+                    info: {
+                        result: err
+                    }
+                })
+                return
+            }
             res.json({
-                code: -100,
+                code: 0,
                 info: {
-                    result: err
+                    post: result
                 }
             })
-            return
-        }
-        res.json({
-            code: 0,
-            info: {
-                post: result
-            }
         })
-    })
+    }else {
+        postModel.create(post,(err,result)=>{
+            if (err) {
+                logger.info(err)
+                res.json({
+                    code: -100,
+                    info: {
+                        result: err
+                    }
+                })
+                return
+            }
+            res.json({
+                code: 0,
+                info: {
+                    post: result
+                }
+            })
+        })
+    }
 })
 
 router.post('/posts/save_to_draft', (req, res, next) => {
